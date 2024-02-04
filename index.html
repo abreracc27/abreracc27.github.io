@@ -67,6 +67,11 @@
 
             .btn{
                 font-size: 3vw;
+                min-height: 50px;
+            }
+
+            .helper{
+                font-size: 10px;
             }
         }
 
@@ -85,7 +90,7 @@
                     <div class="col-10 col-sm-10 col-md-10 col-lg-8 col-xl-8">
                         <div class="row justify-content-center text-center" id="">
                             <div class="col-12 mb-3">
-                                <img class="gif-div" src="assets/gif/excited-cat.gif">
+                                <img class="gif-div" src="assets/gif/asking-cat.gif">
                             </div>
                             <div class="col-12 v-message-box p-3" id="v-message">
                                 <!-- <span class="a">Will you be my </span><span class="b">Valentine?</span> -->
@@ -93,11 +98,28 @@
 
                             <div class="col-12 mt-5" id="btn-group">
                                 <div class="row justify-content-center">
-                                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 col-xl-3" id="btn-yes">
-                                        <button type="button" class="btn btn-primary w-100 h-100">Yes</button>
+                                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 col-xl-3">
+                                        <button type="button" class="btn btn-primary w-100 h-100" id="btn-yes">Yes</button>
                                     </div>
-                                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 col-xl-3" id="btn-no">
-                                        <button type="button" class="btn btn-danger w-100 h-100">No</button>
+                                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 col-xl-3">
+                                        <button type="button" class="btn btn-danger w-100 h-100" id="btn-no" >No</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-5 d-none" id="btn-group2">
+                                <div class="row justify-content-center mb-2">
+                                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 col-xl-3" >
+                                        <span class="helper">(Hold button for 5 seconds)</span>
+                                    </div>
+                                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 col-xl-3"></div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 col-xl-3" id="btn-yes2">
+                                        <button type="button" class="btn btn-primary w-100 h-100" id="btn-yes2">Yes</button>
+                                    </div>
+                                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 col-xl-3" >
+                                        <button type="button" class="btn btn-danger w-100 h-100" id="btn-no2">No</button>
                                     </div>
                                 </div>
                             </div>
@@ -167,76 +189,95 @@
                 }, 100);
 
             });
+            
 
-            var she_said_no = 0;
+            $('#btn-yes').on('click', function() {
+                $(".gif-div").attr("src","assets/gif/excited-cat.gif");
+                $(".gif-div").attr("style","object-fit: cover; object-position: 100% 35%;");
 
-            // $('#btn-yes').on('click', function(){
+                $("#v-message").empty();
+                $("#v-message").removeClass('v-message-box');
+                $("#btn-group").remove();
 
-            //     if(she_said_no == 0){
+                $("#v-message").append('<span class="a">Woot! Woot!</span>');
+            });
 
-            //         $(".gif-div").attr("src","assets/gif/happy-cat.gif");
+            $('#btn-no').on('click', function() {
+                $('#btn-group').addClass('d-none');
+                $('#btn-group2').removeClass('d-none');
 
-            //         $("#v-message").empty();
-            //         $("#v-message").removeClass('v-message-box');
-            //         $("#btn-group").remove();
+                $(".gif-div").attr("src","assets/gif/sad-sad-cat.gif");
 
-            //         $("#v-message").append('<span class="a">Woot! Woot!</span>');
-            //     }else{
-            //         // var timeoutId = 0;
-            //         // $('#btn-yes').on('mousedown', function() {
-            //         //     timeoutId = setTimeout(function(){
-            //         //         alert('pain');
-            //         //     }, 5000);
+                $("#v-message").empty();
+                $("#v-message").removeClass('v-message-box');
+                // $("#btn-group").remove();
 
-            //         // }).on('mouseup mouseleave', function() {
-            //         //     clearTimeout(timeoutId);
-            //         // });
-            //         // alert('pain');
+                $("#v-message").append('<span class="a">Are you sure?</span>');
+            });
 
-                   
-
-            //     }
-            // });
 
             var holdTimeout;
 
-            $('#btn-yes').on('touchstart', function(event) {
+            $('#btn-yes2').on('mousedown touchstart', function(event) {
+                event.preventDefault();
+
+                var initialX = event.pageX || event.originalEvent.touches[0].pageX;
+                var initialY = event.pageY || event.originalEvent.touches[0].pageY;
+
+                $(".gif-div").attr("src","assets/gif/grumpy-cat-cat-meme.gif");
+                $(".gif-div").attr("style","object-fit: cover; object-position: 100% 20%;");
+
                 holdTimeout = setTimeout(function() {
-                    alert('pain');
-                }, 5000); // Adjust the duration as needed
-            }).on('touchend', function(event) {
-                clearTimeout(holdTimeout);
-                // Your code for touchend
-            });
+                    // Your code for long-press
+                    $('#btn-group').addClass('d-none');
+                    $('#btn-group2').addClass('d-none');
 
-           
-
-            $('#btn-no').on('click', function(){
-                
-
-                if(she_said_no == 0){
-                    she_said_no = 1;
-
-                    $(".gif-div").attr("src","assets/gif/sad-sad-cat.gif");
+                    $(".gif-div").attr("src","assets/gif/crying-cat.gif");
+                    $(".gif-div").attr("style","object-fit: cover;");
 
                     $("#v-message").empty();
                     $("#v-message").removeClass('v-message-box');
-                    // $("#btn-group").remove();
 
-                    $("#v-message").append('<span class="a">Are you sure?</span>');
+                    $("#v-message").append('<span class="a">Okay :(</span>');
 
-                    // $('#btn-yes').hover(function(){
-                    //     $(".gif-div").attr("src","assets/gif/grumpy-cat-cat-meme.gif");
-                    //     $(".gif-div").attr("style","object-fit: cover; object-position: 100% 20%;");
-                    // },function(){
-                    //     $(".gif-div").attr("src","assets/gif/sad-sad-cat.gif");
-                    //     $(".gif-div").removeAttr("style");
-                    // });
+                    $(document).off('mousemove touchmove');
+                    // alert("Button held!");
+                }, 5000);
 
 
-                }else{
+                $(document).on('mousemove touchmove', function(event) {
+                    var currentX = event.pageX || event.originalEvent.touches[0].pageX;
+                    var currentY = event.pageY || event.originalEvent.touches[0].pageY;
 
-                } 
+                    // Calculate the distance moved
+                    var deltaX = Math.abs(currentX - initialX);
+                    var deltaY = Math.abs(currentY - initialY);
+
+                    // If the user moves a significant distance, reset the timeout
+                    if (deltaX > 50 || deltaY > 50) {
+                        clearTimeout(holdTimeout);
+                        $(document).off('mousemove touchmove');
+
+                        $(".gif-div").attr("src","assets/gif/sad-sad-cat.gif");
+                        $(".gif-div").removeAttr("style");
+                        // alert("Button moved!");
+
+                    }
+                });
+                
+            }).on('mouseup touchend', function() {
+                clearTimeout(holdTimeout);
+                $(document).off('mousemove touchmove');
+                $(".gif-div").attr("src","assets/gif/sad-sad-cat.gif");
+                $(".gif-div").removeAttr("style");
+
+                // return;
+                // alert("Button released!");
+            });
+    
+
+            $('#btn-no2').on('click', function(){
+                location.reload();
             });
 
         });
