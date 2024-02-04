@@ -200,6 +200,17 @@
                 $("#btn-group").remove();
 
                 $("#v-message").append('<span class="a">Woot! Woot!</span>');
+
+                $('body').flurry({
+                    height: 1000,
+                    character: ["🌷", "🌸", "🌺", "🌻", "🌹", "🪻"],
+                    opacityEasing: "cubic-bezier(1,0,.96,.9)",
+                    wind: 80,
+                    windVariance: 20,
+                    speed: 10000,
+                    startOpacity: 0,
+                    endOpacity: 1,
+                });
             });
 
             $('#btn-no').on('click', function() {
@@ -284,5 +295,61 @@
 
 
     </script>
+
+    <script src="assets/js/jquery.flurry.js"></script>
+
+    <script>
+        // $('body').flurry({
+
+        //     // snowflake symbol
+        //     // can be an array of characters
+        //     character: "❄",
+
+        //     // color of snowflakes
+        //     color: "white",
+
+        //     // how frequently new flakes are generated in ms
+        //     frequency: 100,
+
+        //     // animation speed
+        //     speed: 3000,
+
+        //     // min/max size in px
+        //     small: 8,
+        //     large: 28,
+
+        //     // how far to the left each flake will drift in pixels
+        //     wind: 40,
+
+        //     // how much each flake will drift in pixels
+        //     windVariance: 20,
+
+        //     // rotate snowflakes in degrees
+        //     rotation: 90,
+
+        //     // how much each flake's rotation will be randomized by in degrees
+        //     rotationVariance: 180,
+
+        //     // start/end opacity
+        //     startOpacity: 0,
+        //     endOpacity: 1,
+
+        //     // easing function
+        //     opacityEasing: "cubic-bezier(1,.3,.6,.74)",
+
+        //     // apply a blur effect to snowflakes
+        //     blur: false,
+
+        //     // CSS overflow property
+        //     overflow: "hidden",
+
+        //     // CSS z-index property
+        //     zIndex: 9999,
+
+        // });
+    </script>
+
+    
+
 </body>
 </html>
