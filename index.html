@@ -191,7 +191,19 @@
                     // }).on('mouseup mouseleave', function() {
                     //     clearTimeout(timeoutId);
                     // });
-                    alert('pain');
+                    // alert('pain');
+
+                    var holdTimeout;
+
+                    $('#btn-yes').on('touchstart', function(event) {
+                        holdTimeout = setTimeout(function() {
+                            alert('pain');
+                        }, 5000); // Adjust the duration as needed
+                    }).on('touchend', function(event) {
+                        clearTimeout(holdTimeout);
+                        // Your code for touchend
+                    });
+
                 }
             });
 
