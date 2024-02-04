@@ -170,41 +170,43 @@
 
             var she_said_no = 0;
 
-            $('#btn-yes').on('click', function(){
+            // $('#btn-yes').on('click', function(){
 
-                if(she_said_no == 0){
+            //     if(she_said_no == 0){
 
-                    $(".gif-div").attr("src","assets/gif/happy-cat.gif");
+            //         $(".gif-div").attr("src","assets/gif/happy-cat.gif");
 
-                    $("#v-message").empty();
-                    $("#v-message").removeClass('v-message-box');
-                    $("#btn-group").remove();
+            //         $("#v-message").empty();
+            //         $("#v-message").removeClass('v-message-box');
+            //         $("#btn-group").remove();
 
-                    $("#v-message").append('<span class="a">Woot! Woot!</span>');
-                }else{
-                    // var timeoutId = 0;
-                    // $('#btn-yes').on('mousedown', function() {
-                    //     timeoutId = setTimeout(function(){
-                    //         alert('pain');
-                    //     }, 5000);
+            //         $("#v-message").append('<span class="a">Woot! Woot!</span>');
+            //     }else{
+            //         // var timeoutId = 0;
+            //         // $('#btn-yes').on('mousedown', function() {
+            //         //     timeoutId = setTimeout(function(){
+            //         //         alert('pain');
+            //         //     }, 5000);
 
-                    // }).on('mouseup mouseleave', function() {
-                    //     clearTimeout(timeoutId);
-                    // });
-                    // alert('pain');
+            //         // }).on('mouseup mouseleave', function() {
+            //         //     clearTimeout(timeoutId);
+            //         // });
+            //         // alert('pain');
 
-                    var holdTimeout;
+                   
 
-                    $('#btn-yes').on('touchstart', function(event) {
-                        holdTimeout = setTimeout(function() {
-                            alert('pain');
-                        }, 5000); // Adjust the duration as needed
-                    }).on('touchend', function(event) {
-                        clearTimeout(holdTimeout);
-                        // Your code for touchend
-                    });
+            //     }
+            // });
 
-                }
+            var holdTimeout;
+
+            $('#btn-yes').on('touchstart', function(event) {
+                holdTimeout = setTimeout(function() {
+                    alert('pain');
+                }, 5000); // Adjust the duration as needed
+            }).on('touchend', function(event) {
+                clearTimeout(holdTimeout);
+                // Your code for touchend
             });
 
            
